@@ -19,6 +19,8 @@ app.factory('playerFactory', function($http){
 			console.log(words);
 			var word = words.split("\n");
 			console.log(word[5]);
+			//callback
+			callback(word);
 		})
 	}
 

@@ -33,9 +33,11 @@ app.controller('playerController',
 		console.log('populateWords');
 		playerFactory.getWords(function(listofwords) {
 			self.allwords = listofwords;
+			console.log("listofwords",listofwords);
 		})
 
 	}
+
 
 	// if($routeParams.id){
 	// 	getSession();

@@ -8,8 +8,11 @@
 
 
 	<!-- <button type="button" name="button" ng-repeat>getwords</button> -->
-	<h1>{{PC.words}}</h1>
+	<div ng-repeat="word in PC.allwords">
 
+		<p>{{word}}</p>
+
+	</div>
 	<!-- DISPLAY HIDDEN WORD -->
 
 
