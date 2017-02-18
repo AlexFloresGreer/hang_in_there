@@ -22,7 +22,7 @@ var mongoose      = require('mongoose'),
 /*
 *  database information
 */
-    dbURI         = 'mongodb://localhost/friendsapi';
+    dbURI         = 'mongodb://localhost/hm2';
 /*
 * Connect to the database
 */

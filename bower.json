@@ -1,10 +1,10 @@
 {
-  "name": "001friends_api",
-  "homepage": "https://github.com/AlexFloresGreer/Branching_and_Merging",
+  "name": "hangman",
+  "homepage": "https://github.com/AlexFloresGreer/hang_in_there",
   "authors": [
     "ratona14 <floresalexx@gmail.com>"
   ],
-  "description": "Full Mean Project",
+  "description": "Hangman Project",
   "main": "index.html",
   "license": "MIT",
   "private": true,
