@@ -4,7 +4,11 @@ app.controller('playerController',
 
 
 	var self = this;
-	self.words = "";
+	self.allwords = [];
+	self.words = {};
+	// self.word = {}
+	populateWords();
+
 	// self.allProducts = [];
 	// self.oneProduct = {};
 	// self.prod = {};
@@ -16,10 +20,19 @@ app.controller('playerController',
 	//make function that gets words from factory
 	// store it in a var and pass it to the front end
 
+	// factory.getWords = function(callback) {
+	// 	console.log('hitting getwords');
+	// 	$http.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words').success(function(api_response) {
+	// 		// callback(output)
+	// 		words = api_response.data;
+	// 		console.log(words);
+	// 	})
+	// }
+
 	function populateWords() {
 		console.log('populateWords');
 		playerFactory.getWords(function(listofwords) {
-			self.words = listofwords;
+			self.allwords = listofwords;
 		})
 
 	}

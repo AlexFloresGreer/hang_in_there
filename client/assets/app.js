@@ -23,4 +23,4 @@ app.config(function ($routeProvider) {
       });
 })
 
-app.factory("friendsFactory")
+app.factory("playerFactory")

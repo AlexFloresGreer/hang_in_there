@@ -2,17 +2,23 @@ console.log('we are in playerFactory');
 
 app.factory('playerFactory', function($http){
 
-	var words = {};
+	var words = [];
 	var factory = {};
 
 	// factory.current_user = {name:null, id:null};
 
 	factory.getWords = function(callback) {
 		console.log('hitting getwords');
-		$http.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words').success(function(api_response) {
-			// callback(output)
-			words = api_response.data;
+		var cors_url = 'http://localhost:8080/';
+		var li_url_api = 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words';
+
+		$http.get(cors_url + li_url_api).success(function(api_response) {
+			// callback(output);
+			words = api_response;
+			// console.log(api_response);
 			console.log(words);
+			var word = words.split("\n");
+			console.log(word[5]);
 		})
 	}
 
