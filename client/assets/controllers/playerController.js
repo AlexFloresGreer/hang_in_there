@@ -6,8 +6,10 @@ app.controller('playerController',
 	var self = this;
 	self.allwords = [];
 	self.words = {};
-	// self.word = {}
+	self.randomword = {};
+	// self.random = random;
 	populateWords();
+	// displayRandomWord();
 
 	// self.allProducts = [];
 	// self.oneProduct = {};
@@ -20,23 +22,25 @@ app.controller('playerController',
 	//make function that gets words from factory
 	// store it in a var and pass it to the front end
 
-	// factory.getWords = function(callback) {
-	// 	console.log('hitting getwords');
-	// 	$http.get('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words').success(function(api_response) {
-	// 		// callback(output)
-	// 		words = api_response.data;
-	// 		console.log(words);
-	// 	})
-	// }
-
 	function populateWords() {
 		console.log('populateWords');
-		playerFactory.getWords(function(listofwords) {
-			self.allwords = listofwords;
-			console.log("listofwords",listofwords);
+		playerFactory.getWords(function(randomword) {
+			// self.allwords = listofwords
+			//select random word
+			self.randomword = randomword;
+			// console.log("listofwords",listofwords);
+			console.log('ran', randomword);
 		})
-
 	}
+
+	// function displayRandomWord() {
+	// 	console.log('hitting display random word in controller')
+	// 	playerFactory.getRandomWord(function(randomword) {
+	// 		// self.randomword = randomword.word;
+	// 	})
+	//
+	// }
+
 
 
 	// if($routeParams.id){
