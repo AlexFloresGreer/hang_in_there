@@ -9,16 +9,16 @@ app.factory('playerFactory', function($http){
 
 	//Getting a random word from LinkedIn API and pass it to Front End
 	factory.getRandomWord = function(callback) {
-		// console.log('hitting getwords');
 		var cors_url = 'http://localhost:8080/';
 		var li_url_api = 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words';
 
 		//choosing difficulty
-		// var level = document.getElementById("levelselector").value;
+		var level = document.getElementById("levelSelector").value;
+		console.log('level', level);
 
 		$http.get(cors_url + li_url_api, {
 			params: {
-				difficulty: 5,
+				difficulty: level,
 				minLength: 3,
 				maxLength: 8,
 			},

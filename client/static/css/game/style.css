@@ -32,12 +32,14 @@ h2 {
 
 	float: left;
 	padding-left: 300px;
+	/*padding-bottom: 300px;*/
 }
 
 #loss {
 
 	float: right;
 	padding-right: 300px;
+	/*padding-bottom: 300px;*/
 }
 
 #guesses {
@@ -55,6 +57,4 @@ h2 {
 
 	position: center;
 	left: 660px;
-
-
 }

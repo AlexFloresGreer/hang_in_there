@@ -106,8 +106,6 @@ app.controller('playerController',
 		document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
 		if (letterInPickedWord.join(" ") === correct.join(" ")) {
-		// if (letterInPickedWord.join(" ") === correct) {
-
 			winCounter ++;
 			// alert("You Win!");
 			document.getElementById("win-counter").innerHTML = winCounter;
@@ -128,6 +126,7 @@ app.controller('playerController',
 			document.getElementById("guesses-left").innerHTML = remainingGuesses;
 
 			// alert("You just lost, sorry!");
+
 			beginGame();
 		}
 

@@ -4,32 +4,35 @@
 	<head>
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="./../static/css/game/style.css">
-		<!-- <link rel="stylesheet" type="text/css" href="./../static/images/game"> -->
-
 	</head>
 <body>
 </body>
 </html>
 
-
 <div ng-controller="playerController as PC">
 
+	<h1>HANGMAN</h1>
 
-	<h1> Guess the Word </h1>
+		<!-- <h2>{{PC.randomword}}</h2> -->
+	<h2>Select level of difficulty & press any key to get started!</h2>
 
-		<h2>{{PC.randomword}}</h2>
+	<div id="levelSelector">
+		<select ng-model="selectLevel" ng-change="beginGame();">
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		</select>
+	</div>
 
-
-	<h1>Press any key to get started!</h1>
 	<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
 	<h2 id="word-blank"></h2>
-
-	<div id="zero"></div>
 
 	<p>Wrong Guesses: <span id="wrong-guesses"></span></p>
 	<p id="wins">Wins: <span id="win-counter"></span></p>
 	<p id="loss">Losses: <span id="loss-counter"></span></p>
 
 
+	<div id="zero"></div>
 
 </div>
