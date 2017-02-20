@@ -14,7 +14,12 @@ app.factory('playerFactory', function($http){
 
 		//choosing difficulty
 		var level = document.getElementById("levelSelector").value;
+		if (level == null) {
+			level = 1;
+		}
+		
 		console.log('level', level);
+
 
 		$http.get(cors_url + li_url_api, {
 			params: {

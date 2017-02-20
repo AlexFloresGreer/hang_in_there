@@ -15,6 +15,10 @@ app.controller('playerController',
 	var letterInPickedWord = [];
 	var correct = [];
 
+	// var chooseDifficulty = 1;
+
+	//starting game
+	beginGame();
 
 	//select random word from LinkedIn API and start game
 	function beginGame() {
@@ -28,6 +32,10 @@ app.controller('playerController',
 			letterInPickedWord = randomword.split("");
 
 			console.log('letter in randomword',letterInPickedWord); //not working
+
+			//choosing difficulty
+			// level = document.getElementById("levelSelector").value;
+			// console.log('level', level);
 
 			//reseting correct for new game
 			correct = [];
@@ -44,7 +52,7 @@ app.controller('playerController',
 		})
 	}
 
-	beginGame();
+
 
 
 	function checkLetters(letter) {
@@ -65,11 +73,12 @@ app.controller('playerController',
 						correct[i] = letter;
 					}
 				}
-				// document.getElementById("word-blank").innerHTML = correct.join(" ");
+				document.getElementById("word-blank").innerHTML = correct.join(" ");
 			}
 
 			else {
 				remainingGuesses--;
+
 				wrongGuesses.push(letter);
 				console.log('remaining guesses', remainingGuesses);
 				console.log('wrong', wrongGuesses);
@@ -101,17 +110,28 @@ app.controller('playerController',
 	function roundFinished(){
 
 		document.getElementById("word-blank").innerHTML = correct.join(" ");
-
 		document.getElementById("guesses-left").innerHTML = remainingGuesses;
 		document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
 		if (letterInPickedWord.join(" ") === correct.join(" ")) {
 			winCounter ++;
-			// alert("You Win!");
+
 			document.getElementById("win-counter").innerHTML = winCounter;
 			wrongGuesses = [];
 			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
-			beginGame();
+
+			document.getElementById("word-blank").innerHTML = correct.join(" ");
+
+			var millisecondsToWait = 500;
+			setTimeout(function() {
+				alert("You Win!");
+				beginGame();
+			}, millisecondsToWait);
+
+
+			// beginGame();
+			// alert("You Win!");
+
 		}
 
 		else if (remainingGuesses === 0) {
@@ -125,9 +145,13 @@ app.controller('playerController',
 			document.getElementById("loss-counter").innerHTML = lossCounter ++;
 			document.getElementById("guesses-left").innerHTML = remainingGuesses;
 
-			// alert("You just lost, sorry!");
+			var millisecondsToWait = 500;
+			setTimeout(function() {
+				alert("You Lost! the word was " + self.randomword);
+				beginGame();
+			}, millisecondsToWait);
 
-			beginGame();
+			// beginGame();
 		}
 
 	};
