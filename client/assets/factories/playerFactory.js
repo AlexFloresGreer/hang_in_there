@@ -13,17 +13,17 @@ app.factory('playerFactory', function($http){
 		var cors_url = 'http://localhost:8080/';
 		var li_url_api = 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words';
 
+		//choosing difficulty
+		// var level = document.getElementById("levelselector").value;
+
 		$http.get(cors_url + li_url_api, {
 			params: {
-				hard: 5,
-				min: 3,
-				max: 8,
+				difficulty: 5,
+				minLength: 3,
+				maxLength: 8,
 			},
 		}).success(function(api_response) {
-			// callback(output);
 			words = api_response;
-			// console.log(api_response);
-			// console.log(words);
 			var wordList = words.split("\n");
 			var wordCount = wordList.length-1;
 			var randomNum = Math.floor((Math.random() * wordCount) + 0);
@@ -32,7 +32,6 @@ app.factory('playerFactory', function($http){
 			// console.log('word???', word)
 			words.guess = word;
 			// console.log(word[5]);
-			// callback(wordList);
 			callback(word);
 		})
 	}

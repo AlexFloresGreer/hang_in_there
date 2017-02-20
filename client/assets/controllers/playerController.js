@@ -4,12 +4,13 @@ app.controller('playerController',
 
 	var self = this;
 	self.randomword = {};
-	self.amountblanks = "";
+	// self.amountblanks = "";
 
 
 	var winCounter = 0;
 	var lossCounter = 0;
 	var remainingGuesses = 6;
+
 	var wrongGuesses = [];
 	var letterInPickedWord = [];
 	var correct = [];
@@ -20,22 +21,21 @@ app.controller('playerController',
 		playerFactory.getRandomWord(function(randomword) {
 			// select random word
 			self.randomword = randomword;
+			console.log("random word",randomword);
 
-			console.log("24 ran",randomword);
 			var amountblanks = randomword.length;
 
 			letterInPickedWord = randomword.split("");
 
-			console.log('letter in ran',letterInPickedWord); //not working
+			console.log('letter in randomword',letterInPickedWord); //not working
+
+			//reseting correct for new game
+			correct = [];
 
 			for (var i = 0; i < amountblanks; i++) {
 				correct.push("__");
-				console.log('correct #32', correct);
+				// console.log('correct guess', correct);
 			}
-
-			console.log('blanks',amountblanks);
-			console.log('correct',correct);
-			console.log('ran', randomword);
 
 			document.getElementById("guesses-left").innerHTML = remainingGuesses;
 			document.getElementById("word-blank").innerHTML = correct.join(" ");
@@ -49,11 +49,6 @@ app.controller('playerController',
 
 	function checkLetters(letter) {
 
-		// console.log("letter 52", letter);
-		// playerFactory.getRandomWord(function(randomword) {
-			//select random word
-			// console.log('self 54',self.randomword);
-
 			var amountblanks = self.randomword.length;
 
 			var letterInWord = false;
@@ -61,7 +56,6 @@ app.controller('playerController',
 			for (var i = 0; i < amountblanks ; i++) {
 				if (self.randomword[i] === letter) {
 					letterInWord = true;
-					console.log("65", letterInWord);
 				}
 			};
 
@@ -69,11 +63,12 @@ app.controller('playerController',
 				for (var i = 0; i < amountblanks; i++) {
 					if (self.randomword[i] === letter) {
 						correct[i] = letter;
-						console.log("letter in word", correct);
 					}
 				}
-				document.getElementById("word-blank").innerHTML = correct.join(" ");
-			} else {
+				// document.getElementById("word-blank").innerHTML = correct.join(" ");
+			}
+
+			else {
 				remainingGuesses--;
 				wrongGuesses.push(letter);
 				console.log('remaining guesses', remainingGuesses);
@@ -101,20 +96,52 @@ app.controller('playerController',
 					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman7.png">'
 				}
 			}
-		// })
+	};
+
+	function roundFinished(){
+
+		document.getElementById("word-blank").innerHTML = correct.join(" ");
+
+		document.getElementById("guesses-left").innerHTML = remainingGuesses;
+		document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+
+		if (letterInPickedWord.join(" ") === correct.join(" ")) {
+		// if (letterInPickedWord.join(" ") === correct) {
+
+			winCounter ++;
+			// alert("You Win!");
+			document.getElementById("win-counter").innerHTML = winCounter;
+			wrongGuesses = [];
+			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+			beginGame();
+		}
+
+		else if (remainingGuesses === 0) {
+
+			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+			document.getElementById("loss-counter").innerHTML = lossCounter ++;
+			remainingGuesses = 6;
+			wrongGuesses = [];
+
+			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
+			document.getElementById("loss-counter").innerHTML = lossCounter ++;
+			document.getElementById("guesses-left").innerHTML = remainingGuesses;
+
+			// alert("You just lost, sorry!");
+			beginGame();
+		}
+
 	};
 
 
+	//key pad
+	document.onkeyup = function(event){
 
-//key pad
-
-document.onkeyup = function(event){
-
-	var letterGuessed = String.fromCharCode(event.keyCode).toUpperCase();
-	console.log("this is the letter we typed", letterGuessed)
-	checkLetters(letterGuessed);
-	// roundFinished();
-};
+		var letterGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+		console.log("this is the letter we typed", letterGuessed)
+		checkLetters(letterGuessed);
+		roundFinished();
+	};
 
 
 })
