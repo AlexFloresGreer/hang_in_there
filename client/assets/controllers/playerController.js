@@ -21,11 +21,12 @@ app.controller('playerController',
 			// select random word
 			self.randomword = randomword;
 
+			console.log("24 ran",randomword);
 			var amountblanks = randomword.length;
 
 			letterInPickedWord = randomword.split("");
 
-			console.log('letter in ran',letterInPickedWord);
+			console.log('letter in ran',letterInPickedWord); //not working
 
 			for (var i = 0; i < amountblanks; i++) {
 				correct.push("__");
@@ -48,24 +49,30 @@ app.controller('playerController',
 
 	function checkLetters(letter) {
 
-		playerFactory.getRandomWord(function(randomword) {
+		// console.log("letter 52", letter);
+		// playerFactory.getRandomWord(function(randomword) {
 			//select random word
-			var amountblanks = randomword.length;
+			// console.log('self 54',self.randomword);
+
+			var amountblanks = self.randomword.length;
 
 			var letterInWord = false;
 
 			for (var i = 0; i < amountblanks ; i++) {
-				if (randomword[i] === letter) {
-					letterinWord = true;
+				if (self.randomword[i] === letter) {
+					letterInWord = true;
+					console.log("65", letterInWord);
 				}
 			};
 
 			if (letterInWord) {
 				for (var i = 0; i < amountblanks; i++) {
-					if (randomword[i] === letter) {
+					if (self.randomword[i] === letter) {
 						correct[i] = letter;
+						console.log("letter in word", correct);
 					}
 				}
+				document.getElementById("word-blank").innerHTML = correct.join(" ");
 			} else {
 				remainingGuesses--;
 				wrongGuesses.push(letter);
@@ -94,7 +101,7 @@ app.controller('playerController',
 					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman7.png">'
 				}
 			}
-		})
+		// })
 	};
 
 
