@@ -1,0 +1,60 @@
+body {
+
+	background-color: #c1d72e;
+}
+
+h1 {
+
+	color: white;
+	text-align: center;
+	margin-top: 50px;
+}
+
+p {
+
+	color: white;
+	text-align: center;
+	font-size: 25px;
+}
+
+span {
+
+	color: white;
+}
+
+h2 {
+
+	color: white;
+	text-align: center;
+}
+
+#wins {
+
+	float: left;
+	padding-left: 300px;
+}
+
+#loss {
+
+	float: right;
+	padding-right: 300px;
+}
+
+#guesses {
+
+	padding-top: 30px;
+}
+
+#word-blank {
+
+	margin-bottom: 50px;
+	color: red;
+}
+
+#zero {
+
+	position: center;
+	left: 660px;
+
+
+}

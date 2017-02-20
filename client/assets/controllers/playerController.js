@@ -2,91 +2,112 @@ app.controller('playerController',
 	function(playerFactory, $location, $scope, $window, $routeParams){
 
 
-
 	var self = this;
-	self.allwords = [];
-	self.words = {};
 	self.randomword = {};
-	// self.random = random;
-	populateWords();
-	// displayRandomWord();
+	self.amountblanks = "";
 
-	// self.allProducts = [];
-	// self.oneProduct = {};
-	// self.prod = {};
-	// self.deleteProduct = deleteProduct;
-	// self.getOneProduct = getOneProduct;
-	// self.editProduct = editProduct;
-	//
 
-	//make function that gets words from factory
-	// store it in a var and pass it to the front end
+	var winCounter = 0;
+	var lossCounter = 0;
+	var remainingGuesses = 6;
+	var wrongGuesses = [];
+	var letterInPickedWord = [];
+	var correct = [];
 
-	function populateWords() {
-		console.log('populateWords');
-		playerFactory.getWords(function(randomword) {
-			// self.allwords = listofwords
-			//select random word
+
+	//select random word from LinkedIn API and start game
+	function beginGame() {
+		playerFactory.getRandomWord(function(randomword) {
+			// select random word
 			self.randomword = randomword;
-			// console.log("listofwords",listofwords);
+
+			var amountblanks = randomword.length;
+
+			letterInPickedWord = randomword.split("");
+
+			console.log('letter in ran',letterInPickedWord);
+
+			for (var i = 0; i < amountblanks; i++) {
+				correct.push("__");
+				console.log('correct #32', correct);
+			}
+
+			console.log('blanks',amountblanks);
+			console.log('correct',correct);
 			console.log('ran', randomword);
+
+			document.getElementById("guesses-left").innerHTML = remainingGuesses;
+			document.getElementById("word-blank").innerHTML = correct.join(" ");
+			document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman0.png">'
+
 		})
 	}
 
-	// function displayRandomWord() {
-	// 	console.log('hitting display random word in controller')
-	// 	playerFactory.getRandomWord(function(randomword) {
-	// 		// self.randomword = randomword.word;
-	// 	})
-	//
-	// }
+	beginGame();
+
+
+	function checkLetters(letter) {
+
+		playerFactory.getRandomWord(function(randomword) {
+			//select random word
+			var amountblanks = randomword.length;
+
+			var letterInWord = false;
+
+			for (var i = 0; i < amountblanks ; i++) {
+				if (randomword[i] === letter) {
+					letterinWord = true;
+				}
+			};
+
+			if (letterInWord) {
+				for (var i = 0; i < amountblanks; i++) {
+					if (randomword[i] === letter) {
+						correct[i] = letter;
+					}
+				}
+			} else {
+				remainingGuesses--;
+				wrongGuesses.push(letter);
+				console.log('remaining guesses', remainingGuesses);
+				console.log('wrong', wrongGuesses);
+
+				if (remainingGuesses === 6){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman1.png">'
+				}
+				else if (remainingGuesses === 5){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman2.png">'
+				}
+				else if (remainingGuesses === 4){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman3.png">'
+				}
+				else if (remainingGuesses === 3){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman4.png">'
+				}
+				else if (remainingGuesses === 2){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman5.png">'
+				}
+				else if (remainingGuesses === 1){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman6.png">'
+				}
+				else if (remainingGuesses === 0){
+					document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman7.png">'
+				}
+			}
+		})
+	};
 
 
 
-	// if($routeParams.id){
-	// 	getSession();
-	// 	getOneProduct($routeParams.id);
-	// }
-	// else if(!$routeParams.id){
-	// 	getProductsListing();
-	// }
-	//
-	//
-	// function getSession () {
-	// 	userFactory.getSession(function(factoryData){
-	// 		self.current_user = factoryData.user.name
-	// 		self.current_pic = factoryData.user.pic
-	// 		if(self.current_user ==null){
-	// 			self.current_null = null
-	// 			$window.location.href= "/main#/listings";
-	// 		}
-	// 	})
-	// }
+//key pad
 
-	// function getProductsListing(){
-	// 	getSession();
-	// 	productFactory.getProductsListing(function(data){
-	// 		self.allProducts = data;
-	// 		self.prod = self.allProducts[0];
-	// 	})
-	// }
-	//
-	// function deleteProduct(index){
-	// 	productFactory.deleteProduct(index, function(data){
-	// 		self.allProducts = data;
-	// 	});
-	// }
-	//
-	// function getOneProduct(index){
-	// 	productFactory.getOneProduct(index, function(data){
-	// 		self.oneProduct = data;
-	// 	})
-	// }
-	//
-	// function editProduct(index){
-	// 	productFactory.editProduct(index, self.prod, function(data){
-	// 		self.allProducts = data;
-	// 		$location.url('/listings');
-	// 	})
-	// }
+document.onkeyup = function(event){
+
+	var letterGuessed = String.fromCharCode(event.keyCode).toUpperCase();
+	console.log("this is the letter we typed", letterGuessed)
+	checkLetters(letterGuessed);
+	// roundFinished();
+};
+
+
 })

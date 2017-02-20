@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Hangman</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" >
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" > -->
     <script src="angular/angular.js" charset="utf-8"></script>
     <script src="angular-route/angular-route.js"></script>
     <script src="ng-file-upload/ng-file-upload.js"></script>
@@ -14,12 +14,12 @@
   </head>
   <body>
     <center>
-      <h1>Hangman</h1>
-      <!-- <a href="#/new">Create Friends</a> -->
-      <a href="#/game">START GAME</a>
+      <a href="#/newplayer">Login</a> | <a href="#/game">Hangman</a> | <a href="#/leaderboard">Leaderboard</a>
+
       <div ng-view="">
 
       </div>
+      
     </center>
   </body>
 </html>

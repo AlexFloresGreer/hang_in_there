@@ -6,15 +6,13 @@ app.config(function ($routeProvider) {
       .when("/game", {
          templateUrl: "./partials/game.html"
       })
-      // .when("/edit/:id", {
-      //    templateUrl: "./partials/edit.html"
-      // })
+
       .when("/newplayer", {
          templateUrl: "./partials/newplayer.html"
       })
-      // .when("/show", {
-      //    templateUrl: "./partials/show.html"
-      // })
+      .when("/leaderboard", {
+         templateUrl: "./partials/leaderboard.html"
+      })
       // .when("/show/:id", {
       //    templateUrl: "./partials/show.html"
       // })

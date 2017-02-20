@@ -1,31 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./../static/css/game/style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="./../static/images/game"> -->
+
+	</head>
+<body>
+</body>
+</html>
+
+
 <div ng-controller="playerController as PC">
 
 
 	<h1> Guess the Word </h1>
 
-	<!-- <h2>You have 6 chances to get it right</h2> -->
+		<h2>{{PC.randomword}}</h2>
 
 
+	<h1>Press any key to get started!</h1>
+	<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
+	<h2 id="word-blank"></h2>
 
-	<!-- <button type="button" name="button" ng-repeat>getwords</button> -->
-	<!-- <div ng-repeat="word in PC.allwords"> -->
+	<div id="zero"></div>
 
-		<p>{{PC.randomword}}</p>
-
-	<!-- </div> -->
-
-	<!-- <div ng-repeat="random in PC.randomword">
-		<p>{{random}}
-	</div> -->
-	<!-- DISPLAY SECRET WORD -->
+	<p>Wrong Guesses: <span id="wrong-guesses"></span></p>
+	<p id="wins">Wins: <span id="win-counter"></span></p>
+	<p id="loss">Losses: <span id="loss-counter"></span></p>
 
 
-	<!-- <form ng-submit="PC.newGame()">
-		<h4><input type="text" ng-model="PC.newGame.guess"></h4>
-		<input type="submit" value="Your Guess">
-	</form>
-
-
-	<button type="button" name="RESET">RESET</button> -->
 
 </div>
