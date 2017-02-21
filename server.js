@@ -14,8 +14,8 @@ app.use(express.static(path.join(__dirname,'./bower_components')));
 
 require('./server/config/mongoose.js');
 
-// var routes_setter = require('./server/config/routes.js');
-// routes_setter(app);
+var routes_setter = require('./server/config/routes.js');
+routes_setter(app);
 
 
 // // Setup local server

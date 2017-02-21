@@ -1,11 +1,13 @@
 app.controller('playerController',
-	function(playerFactory, $location, $scope, $window, $routeParams){
+	function(playerFactory, userFactory, $location, $scope, $window, $routeParams){
 
+	$scope.user;
+	// $scope.wins;
+	// $scope.losses;
 
 	var self = this;
 	self.randomword = {};
-	// self.amountblanks = "";
-
+	// self.user = {};
 
 	var winCounter = 0;
 	var lossCounter = 0;
@@ -14,11 +16,24 @@ app.controller('playerController',
 	var wrongGuesses = [];
 	var letterInPickedWord = [];
 	var correct = [];
-
 	// var chooseDifficulty = 1;
 
 	//starting game
 	beginGame();
+
+	//getting user to display in UI/Game
+	userFactory.getUser(function(lUser){
+			if(lUser){
+					$scope.user = lUser;
+					// self.user = lUser;
+					console.log('$scope.user', $scope.user);
+					// $scope.user.wins = lWins;
+					// $scope.losses = lLosses
+			}else{
+					$location.url('login');
+			}
+	});
+
 
 	//select random word from LinkedIn API and start game
 	function beginGame() {
@@ -50,7 +65,7 @@ app.controller('playerController',
 			document.getElementById("zero").innerHTML = '<img id="one" src="../../static/images/game/hangman0.png">'
 
 		})
-	}
+	};
 
 
 
@@ -114,9 +129,17 @@ app.controller('playerController',
 		document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
 		if (letterInPickedWord.join(" ") === correct.join(" ")) {
-			winCounter ++;
+			winCounter++;
+			$scope.user.wins = winCounter;
 
-			document.getElementById("win-counter").innerHTML = winCounter;
+			userFactory.updateScore($scope.user, function(data) {
+				$scope.user = data;
+				console.log('scope', $scope.user);
+
+			});
+
+
+			// document.getElementById("win-counter").innerHTML = winCounter;
 			wrongGuesses = [];
 			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
@@ -128,21 +151,26 @@ app.controller('playerController',
 				beginGame();
 			}, millisecondsToWait);
 
-
-			// beginGame();
-			// alert("You Win!");
-
 		}
 
 		else if (remainingGuesses === 0) {
 
+			lossCounter++;
+			$scope.user.losses = lossCounter;
+
+			userFactory.updateScore($scope.user, function(data) {
+				$scope.user = data;
+				console.log('scope', $scope.user);
+
+			});
+
 			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
-			document.getElementById("loss-counter").innerHTML = lossCounter ++;
+			// document.getElementById("loss-counter").innerHTML = lossCounter++;
 			remainingGuesses = 6;
 			wrongGuesses = [];
 
 			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
-			document.getElementById("loss-counter").innerHTML = lossCounter ++;
+			// document.getElementById("loss-counter").innerHTML = lossCounter ++;
 			document.getElementById("guesses-left").innerHTML = remainingGuesses;
 
 			var millisecondsToWait = 500;

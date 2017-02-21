@@ -7,17 +7,16 @@ app.config(function ($routeProvider) {
          templateUrl: "./partials/game.html"
       })
 
-      .when("/newplayer", {
-         templateUrl: "./partials/newplayer.html"
+      .when("/login", {
+         templateUrl: "./partials/login.html"
       })
+
       .when("/leaderboard", {
          templateUrl: "./partials/leaderboard.html"
       })
-      // .when("/show/:id", {
-      //    templateUrl: "./partials/show.html"
-      // })
+
       .otherwise({
-         redirectTo: "/"
+         redirectTo: "/login"
       });
 })
 

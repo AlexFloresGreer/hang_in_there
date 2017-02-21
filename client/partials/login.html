@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./../static/css/game/style.css">
+	</head>
+<body>
+</body>
+</html>
+
+  <div ng-controller="userController">
+          <h2>Login to HANGMAN</h2>
+          <form id='login-form' ng-submit='login()'>
+              <label for="name">Name: </label>
+              <input type="text" name="name" ng-model='user.name'><br>
+              <input type="submit" value="Enter">
+          </form>
+          <p ng-if='errors'>{{errors.name.message}}</p>
+  </div>
+
+
+</div>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,12 +8,14 @@
 </body>
 </html>
 
-<div ng-controller="playerController as PC">
+
 
 	<h1>HANGMAN</h1>
-
+	<div ng-controller="playerController as PC">
+		<h2>Welcome {{user.name}}, select level of difficulty & press any key to get started!</h2>
 		<!-- <h2>{{PC.randomword}}</h2> -->
-	<h2>Select level of difficulty & press any key to get started!</h2>
+
+
 
 
 	<div id="levelSelector">
@@ -27,12 +28,13 @@
 	</div>
 
 	<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
+
 	<h2 id="word-blank"></h2>
 
 	<p>Wrong Guesses: <span id="wrong-guesses"></span></p>
-	<p id="wins">Wins: <span id="win-counter"></span></p>
-	<p id="loss">Losses: <span id="loss-counter"></span></p>
 
+  <p id="wins">Wins: {{user.wins}}</p>
+	<p id="loss">Losses: {{user.losses}}</p>
 
 	<div id="zero"></div>
 

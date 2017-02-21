@@ -13,17 +13,16 @@ app.factory('playerFactory', function($http){
 		var li_url_api = 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words';
 
 		//choosing difficulty
-		var level = document.getElementById("levelSelector").value;
-		if (level == null) {
-			level = 1;
-		}
-		
-		console.log('level', level);
-
+		// var level = document.getElementById("levelSelector").value;
+		// if (level == null) {
+		// 	level = 1;
+		// }
+		//
+		// console.log('level', level);
 
 		$http.get(cors_url + li_url_api, {
 			params: {
-				difficulty: level,
+				difficulty: 5,
 				minLength: 3,
 				maxLength: 8,
 			},

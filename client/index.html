@@ -8,18 +8,25 @@
     <script src="angular-route/angular-route.js"></script>
     <script src="ng-file-upload/ng-file-upload.js"></script>
     <script src="assets/app.js" charset="utf-8"></script>
-    <script src="./assets/factories/playerFactory.js" charset="utf-8"></script>
+
     <script src="./assets/controllers/playerController.js" charset="utf-8"></script>
+    <script src="./assets/controllers/userController.js" charset="utf-8"></script>
+    
+    <script src="./assets/factories/playerFactory.js" charset="utf-8"></script>
+    <script src="./assets/factories/userFactory.js" charset="utf-8"></script>
+
+
+
 
   </head>
   <body>
     <center>
-      <a href="#/newplayer">Login</a> | <a href="#/game">Hangman</a> | <a href="#/leaderboard">Leaderboard</a>
+      <a href="#/login">Login</a> | <a href="#/game">Hangman</a> | <a href="#/leaderboard">Leaderboard</a>
 
       <div ng-view="">
 
       </div>
-      
+
     </center>
   </body>
 </html>

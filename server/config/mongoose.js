@@ -26,6 +26,8 @@ var mongoose      = require('mongoose'),
 /*
 * Connect to the database
 */
+mongoose.Promise = global.Promise;
+
 mongoose.connect( dbURI );
 /*
 *  CONNECTION EVENTS
