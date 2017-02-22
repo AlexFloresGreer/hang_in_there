@@ -11,5 +11,9 @@ module.exports = function(app){
   app.put('/update/:id', function(req,res){
   		userController.update(req,res);
   	})
+    
+	app.get('/leaderboard', function(req,res){
+		userController.display(req,res);
+	})
 
 }

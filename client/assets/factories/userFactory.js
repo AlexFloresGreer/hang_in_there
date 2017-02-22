@@ -19,6 +19,15 @@ app.factory('userFactory', ['$http', function($http){
         callback(user);
     }
 
+    factory.getAllUsers = function(callback) {
+      console.log('getAllUsers?')
+      $http.get('/leaderboard')
+      .success(function(usersData) {
+        console.log('ud', usersData);
+        callback(usersData)
+      }).catch(console.log('error'));
+    }
+
 
     factory.updateScore = function(user, callback){
   		$http.put('/update/' + user._id, user)

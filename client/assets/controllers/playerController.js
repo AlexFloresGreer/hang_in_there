@@ -2,12 +2,12 @@ app.controller('playerController',
 	function(playerFactory, userFactory, $location, $scope, $window, $routeParams){
 
 	$scope.user;
-	// $scope.wins;
-	// $scope.losses;
+	$scope.allusers;
+
+
 
 	var self = this;
 	self.randomword = {};
-	// self.user = {};
 
 	var winCounter = 0;
 	var lossCounter = 0;
@@ -16,25 +16,32 @@ app.controller('playerController',
 	var wrongGuesses = [];
 	var letterInPickedWord = [];
 	var correct = [];
-	// var chooseDifficulty = 1;
 
-	//starting game
-	beginGame();
 
 	//getting user to display in UI/Game
-	userFactory.getUser(function(lUser){
+	userFactory.getUser(function(lUser) {
 			if(lUser){
 					$scope.user = lUser;
-					// self.user = lUser;
+
 					console.log('$scope.user', $scope.user);
-					// $scope.user.wins = lWins;
-					// $scope.losses = lLosses
-			}else{
+
+			} else {
 					$location.url('login');
 			}
 	});
+	//
+	userFactory.getAllUsers(function(allusers) {
+		console.log('allusers', allusers);
+		if(allusers) {
+			$scope.allusers = allusers
+			// console.log($scope.allusers);
+		} else {
+			console.log('users not found');
+		}
+	})
 
 
+	beginGame();
 	//select random word from LinkedIn API and start game
 	function beginGame() {
 		playerFactory.getRandomWord(function(randomword) {
@@ -138,8 +145,6 @@ app.controller('playerController',
 
 			});
 
-
-			// document.getElementById("win-counter").innerHTML = winCounter;
 			wrongGuesses = [];
 			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
 
@@ -170,7 +175,6 @@ app.controller('playerController',
 			wrongGuesses = [];
 
 			document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
-			// document.getElementById("loss-counter").innerHTML = lossCounter ++;
 			document.getElementById("guesses-left").innerHTML = remainingGuesses;
 
 			var millisecondsToWait = 500;
@@ -178,10 +182,7 @@ app.controller('playerController',
 				alert("You Lost! the word was " + self.randomword);
 				beginGame();
 			}, millisecondsToWait);
-
-			// beginGame();
 		}
-
 	};
 
 
