@@ -5,12 +5,7 @@ app.controller('gameController',
 	$scope.image;
 	$scope.levels = [1,2,3,4,5,6,7,8,9,10];
 	$scope.level = $scope.levels[0];
-
-	$scope.levelSelector = function() {
-		console.log($scope.level);
-		gameFactory.selectDifficulty($scope.level);
-		beginGame();
-	}
+	$scope.hint;
 
 	var self = this;
 	self.randomWord = {};
@@ -52,6 +47,7 @@ app.controller('gameController',
 			if(!$scope.$$phase) {
 				$scope.$apply();
 			}
+			$scope.hint = "";
 
 			correctGuesses = [];
 
@@ -65,6 +61,17 @@ app.controller('gameController',
 		})
 	};
 
+	$scope.levelSelector = function() {
+		console.log($scope.level);
+		gameFactory.selectDifficulty($scope.level);
+		beginGame();
+	}
+
+	$scope.getHint = function() {
+		$scope.hint = "Word starts with " + self.randomWord[0] + " and ends with " + self.randomWord[self.randomWord.length-1];
+
+	}
+
 
 	function charCheckAgainstWord(letter) {
 			var amountBlanks = self.randomWord.length;
@@ -77,7 +84,8 @@ app.controller('gameController',
 				}
 			}
 
-			if (!letterInWord) {
+			//WrongGuesses.indexOf returns -1 if the char is not in wrongGuesses array
+			if (!letterInWord && wrongGuesses.indexOf(letter) === -1) {
 				remainingGuesses--;
 				wrongGuesses.push(letter);
 				updateHangmanImage(remainingGuesses);

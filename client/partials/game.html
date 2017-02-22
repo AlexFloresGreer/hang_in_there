@@ -31,9 +31,16 @@
 
 		<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
 
+
+
 		<h2 id="word-blank"></h2>
 
 		<p>Wrong Guesses: <span id="wrong-guesses"></span></p>
+
+		<div id="hint">
+			<button type="button" name="Hint" ng-click="getHint()">Hint</button>
+			<p>{{hint}}</p>
+		</div>
 
 	  <p id="wins">Wins: {{user.wins}}</p>
 		<p id="loss">Losses: {{user.losses}}</p>

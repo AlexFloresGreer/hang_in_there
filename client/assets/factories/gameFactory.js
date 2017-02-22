@@ -5,6 +5,11 @@ app.factory('gameFactory', function($http){
 
 	var levelSelector = 1;
 
+	factory.getDefinition = function (word) {
+	let dictionaryUrl = 'http://www.dictionary.com/browse/' + word;
+	ctrl.url = dictionaryUrl;
+};
+
 	factory.selectDifficulty = function(level) {
 		levelSelector = level;
 		console.log('lselector', levelSelector);
