@@ -1,5 +1,3 @@
-console.log('hitting userFactory');
-
 app.factory('userFactory', ['$http', function($http){
     var factory = {}
     var user;
@@ -20,14 +18,11 @@ app.factory('userFactory', ['$http', function($http){
     }
 
     factory.getAllUsers = function(callback) {
-      // console.log('getAllUsers?')
       $http.get('/leaderboard')
       .success(function(usersData) {
-        // console.log('ud', usersData);
         callback(usersData)
-      }).catch(console.log('error'));
+      }).catch(console.log('ERROR users in database not found'));
     }
-
 
     factory.updateScore = function(user, callback){
   		$http.put('/update/' + user._id, user)
@@ -36,6 +31,7 @@ app.factory('userFactory', ['$http', function($http){
   			callback(returnData);
   		})
   	}
+
     // factory.logout = function(){
     //     user = null;
     // }

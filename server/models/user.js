@@ -11,7 +11,6 @@ var UserSchema = new mongoose.Schema({
     losses: {
       type: Number,
       default: 0
-
     },
 
 }, {timestamps: true})

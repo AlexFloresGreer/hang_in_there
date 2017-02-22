@@ -15,10 +15,8 @@ function UserController() {
               console.log(err);
             }
             if(user) {
-                console.log('user found and returned');
                 return res.json(user);
             } else {
-                console.log('create users', req.body);
                 var user = new User(req.body);
                 user.save(function(err) {
                     if(err) {
@@ -33,16 +31,15 @@ function UserController() {
     };
 
     this.update = function(req,res) {
-      console.log('updating score', req.params.id);
       User.findOne({_id:req.params.id}, function(err, user) {
         if(err) {
-          console.log("something went wrong");
+          console.log("ERROR cannot find user");
         } else {
           user.wins = req.body.wins;
           user.losses = req.body.losses;
           user.save(function(err) {
             if(err) {
-              console.log("something went wrong");
+              console.log("ERROR cannot save user to database");
             } else {
               res.json(user);
             }
@@ -55,9 +52,8 @@ function UserController() {
     this.display = function(req,res) {
       User.find({}, function(err, users) {
         if(err) {
-          console.log('error in backend controller');
+          console.log('ERROR cannot reach users in database');
         } else {
-          // console.log('users UC', users);
           res.json(users)
         }
       })
