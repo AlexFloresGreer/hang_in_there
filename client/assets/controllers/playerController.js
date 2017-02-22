@@ -2,7 +2,7 @@ app.controller('playerController',
 	function(playerFactory, userFactory, $location, $scope, $window, $routeParams){
 
 	$scope.user;
-	$scope.allusers;
+	// $scope.allusers;
 
 
 
@@ -29,16 +29,16 @@ app.controller('playerController',
 					$location.url('login');
 			}
 	});
-	//
-	userFactory.getAllUsers(function(allusers) {
-		console.log('allusers', allusers);
-		if(allusers) {
-			$scope.allusers = allusers
-			// console.log($scope.allusers);
-		} else {
-			console.log('users not found');
-		}
-	})
+	// //
+	// userFactory.getAllUsers(function(allusers) {
+	// 	// console.log('allusers', allusers);
+	// 	if(allusers) {
+	// 		$scope.allusers = allusers
+	// 		// console.log($scope.allusers);
+	// 	} else {
+	// 		console.log('users not found');
+	// 	}
+	// })
 
 
 	beginGame();

@@ -53,13 +53,11 @@ function UserController() {
     };
 
     this.display = function(req,res) {
-      console.log('displaying leaderboard');
       User.find({}, function(err, users) {
-        console.log('????????')
         if(err) {
           console.log('error in backend controller');
         } else {
-          console.log('users UC', users);
+          // console.log('users UC', users);
           res.json(users)
         }
       })

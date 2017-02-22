@@ -33,7 +33,7 @@ app.factory('playerFactory', function($http){
 			var randomNum = Math.floor((Math.random() * wordCount) + 0);
 
 			var word = wordList[randomNum].toUpperCase();
-			console.log('word???', word)
+			// console.log('word???', word)
 			words.guess = word;
 			// console.log(word[5]);
 			callback(word);

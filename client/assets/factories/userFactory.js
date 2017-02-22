@@ -20,10 +20,10 @@ app.factory('userFactory', ['$http', function($http){
     }
 
     factory.getAllUsers = function(callback) {
-      console.log('getAllUsers?')
+      // console.log('getAllUsers?')
       $http.get('/leaderboard')
       .success(function(usersData) {
-        console.log('ud', usersData);
+        // console.log('ud', usersData);
         callback(usersData)
       }).catch(console.log('error'));
     }
