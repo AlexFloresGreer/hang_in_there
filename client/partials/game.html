@@ -10,8 +10,13 @@
 
 	<h1>HANGMAN</h1>
 
-	<div ng-controller="gameController as GC">
 
+
+		<div ng-controller="userController" class="logout">
+					<a href="#/logout" ng-click='logout()'>Logout</a>
+		</div>
+
+	<div ng-controller="gameController as GC">
 		<h3>Welcome <span id="userName">{{user.name}}</span>,</h3>
 		<h3>to start game select level of difficulty & press any key to get started!</h3>
 

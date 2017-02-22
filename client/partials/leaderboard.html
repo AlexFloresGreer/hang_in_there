@@ -8,11 +8,25 @@
 </body>
 </html>
 
+<div ng-controller="userController" class="logout">
+			<a href="#/logout" ng-click='logout()'>Logout</a>
+</div>
+
+<div ng-controller="gameController as GC">
+	<h3>Welcome <span id="userName">{{user.name}}</span>,</h3>
+</div>
+
 <div ng-controller="leaderboardController">
-    <header>
-        <!-- <h1>Hi {{user.name}}!</h1>
-        <a class='logoff' href="" ng-click='logout()'>Logout</a> -->
-    </header>
+
+	<div class="filterFriends">
+		Search Friends: <input type="text" ng-model="filter_name">
+		<ul>
+			<li ng-repeat="user in allusers | filter:filter_name" id="friendSearch"></li>
+				{{user.name}} {{user.wins}}
+			</li>
+		</ul>
+	</div>
+
     <div class="container">
         <table class="table table-hover">
             <thead>

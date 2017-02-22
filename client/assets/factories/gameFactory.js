@@ -16,8 +16,6 @@ app.factory('gameFactory', function($http){
 	}
 
 	factory.getRandomWord = function(callback) {
-		console.log('callbackkkk', callback);
-
 		var corsURL = 'http://localhost:8080/';
 		var linkedInAPI = 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words';
 

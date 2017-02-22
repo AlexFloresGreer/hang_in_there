@@ -13,6 +13,10 @@ app.factory('userFactory', ['$http', function($http){
         });
     }
 
+    factory.logout = function() {
+      user = null;
+    }
+
     factory.getUser = function(callback){
         callback(user);
     }
@@ -27,14 +31,10 @@ app.factory('userFactory', ['$http', function($http){
     factory.updateScore = function(user, callback){
   		$http.put('/update/' + user._id, user)
   		.success(function(returnData){
-        console.log('returnData', returnData);
+        // console.log('returnData', returnData);
   			callback(returnData);
   		})
   	}
-
-    // factory.logout = function(){
-    //     user = null;
-    // }
 
     return factory;
 

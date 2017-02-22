@@ -15,6 +15,10 @@ app.config(function ($routeProvider) {
          templateUrl: "./partials/leaderboard.html"
       })
 
+      .when("/logout", {
+         templateUrl: "./partials/login.html"
+      })
+
       .otherwise({
          redirectTo: "/login"
       });
