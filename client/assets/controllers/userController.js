@@ -11,4 +11,5 @@ app.controller('userController', ['$scope', 'userFactory', '$location',
             $scope.errors = error;
         });
     }
+
 }]);

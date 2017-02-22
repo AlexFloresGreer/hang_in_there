@@ -13,16 +13,21 @@
 	<h1>HANGMAN</h1>
 	<div ng-controller="gameController as GC">
 		<h2>Welcome {{user.name}}, select level of difficulty & press any key to get started!</h2>
-		<!-- <h2>{{GC.randomword}}</h2> -->
 
-		<div id="levelSelector">
-			<select>
-			  <option value="1">1</option>
-			  <option value="2">2</option>
-			  <option value="3">3</option>
-			  <option value="4">4</option>
-			</select>
-		</div>
+				<select ng-model="level" ng-change="levelSelector()">
+					<option disabled selected value>-Select Difficulty-</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+
 
 		<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
 
@@ -34,9 +39,6 @@
 		<p id="loss">Losses: {{user.losses}}</p>
 
 		<div id="zero">
-
-			<!-- {{image}}
-			{{dog}} -->
 
 			<img id="one" src="../static/images/game/{{image}}">
 

@@ -3,6 +3,14 @@ app.controller('gameController',
 
 	$scope.user;
 	$scope.image;
+	$scope.levels = [1,2,3,4,5,6,7,8,9,10];
+	$scope.level = $scope.levels[0];
+
+	$scope.levelSelector = function() {
+		console.log($scope.level);
+		gameFactory.selectDifficulty($scope.level);
+		beginGame();
+	}
 
 	var self = this;
 	self.randomWord = {};
