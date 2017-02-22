@@ -8,26 +8,27 @@
 </body>
 </html>
 
-
-
 	<h1>HANGMAN</h1>
+
 	<div ng-controller="gameController as GC">
-		<h2>Welcome {{user.name}}, select level of difficulty & press any key to get started!</h2>
 
-				<select ng-model="level" ng-change="levelSelector()">
-					<option disabled selected value>-Select Difficulty-</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
+		<h3>Welcome <span id="userName">{{user.name}}</span>,</h3>
+		<h3>to start game select level of difficulty & press any key to get started!</h3>
+
+			<div id="select">
+				<select ng-model="level" ng-change="levelSelector()" class="form-control">
+					<option value="1">Level 1</option>
+					<option value="2">Level 2</option>
+					<option value="3">Level 3</option>
+					<option value="4">Level 4</option>
+					<option value="5">Level 5</option>
+					<option value="6">Level 6</option>
+					<option value="7">Level 7</option>
+					<option value="8">Level 8</option>
+					<option value="9">Level 9</option>
+					<option value="10">Level 10</option>
 				</select>
-
+			</div>
 
 		<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
 
@@ -38,7 +39,7 @@
 		<p>Wrong Guesses: <span id="wrong-guesses"></span></p>
 
 		<div id="hint">
-			<button type="button" name="Hint" ng-click="getHint()">Hint</button>
+			<button type="button" name="Hint" ng-click="getHint()" class="btn btn-default" >Need a hint?</button>
 			<p>{{hint}}</p>
 		</div>
 

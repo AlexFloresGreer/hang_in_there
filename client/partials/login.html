@@ -9,11 +9,14 @@
 </html>
 
   <div ng-controller="userController">
-          <h2>Login to HANGMAN</h2>
-          <form id='login-form' ng-submit='login()'>
-              <label for="name">Name: </label>
+          <h2>Welcome to HANGMAN</h2>
+					<h4>Please create a User Name!</h4>
+          <form id='login-form' ng-submit='login()' class="form-inline">
+						<div class="form-group">
+              <label for="name" class="sr-only">Name: </label>
               <input type="text" name="name" ng-model='user.name'><br>
-              <input type="submit" value="Enter">
+						</div>
+              <input type="submit" value="Enter" class="btn btn-default">
           </form>
           <p ng-if='errors'>{{errors.name.message}}</p>
   </div>

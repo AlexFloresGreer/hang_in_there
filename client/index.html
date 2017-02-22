@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Hangman</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" > -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script src="angular/angular.js" charset="utf-8"></script>
     <script src="angular-route/angular-route.js"></script>
     <script src="ng-file-upload/ng-file-upload.js"></script>
@@ -22,10 +25,13 @@
   </head>
   <body>
     <center>
-      <a href="#/login">Login</a> | <a href="#/game">Hangman</a> | <a href="#/leaderboard">Leaderboard</a>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#/login">Login</a><li>
+        <li role="presentation"><a href="#/game">Hangman</a></li>
+        <li role="presentation"><a href="#/leaderboard">Leaderboard</a></li></li>
+      </ul>
 
       <div ng-view="">
-
       </div>
 
     </center>

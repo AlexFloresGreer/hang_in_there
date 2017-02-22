@@ -58,3 +58,11 @@ h2 {
 	position: center;
 	left: 660px;
 }
+
+#userName {
+	color: red;
+}
+
+#select {
+	width: 100px;
+}
