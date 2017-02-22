@@ -12,7 +12,7 @@
 
 
 
-		<div ng-controller="userController" class="logout">
+		<div ng-controller="userController" id="logout">
 					<a href="#/logout" ng-click='logout()'>Logout</a>
 		</div>
 
@@ -35,13 +35,13 @@
 				</select>
 			</div>
 
-		<p id="guesses">Guesses Left: <span id="guesses-left"></span></p>
+		<p id="guesses">Guesses Left: {{guessesLeft}}</p>
 
 
 
-		<h2 id="word-blank"></h2>
+		<h2> {{correctGuesses}} </h2>
 
-		<p>Wrong Guesses: <span id="wrong-guesses"></span></p>
+		<p>Wrong Guesses: {{wrongGuesses}}</p>
 
 		<div id="hint">
 			<button type="button" name="Hint" ng-click="getHint()" class="btn btn-default" >Need a hint?</button>

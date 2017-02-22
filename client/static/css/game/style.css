@@ -70,3 +70,8 @@ h2 {
 #friendSearch {
 	color: white;
 }
+
+#logout {
+	float: right;
+	padding-right: 150px;
+}

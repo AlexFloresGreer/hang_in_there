@@ -8,7 +8,7 @@
 </body>
 </html>
 
-<div ng-controller="userController" class="logout">
+<div ng-controller="userController" id="logout">
 			<a href="#/logout" ng-click='logout()'>Logout</a>
 </div>
 
@@ -17,17 +17,8 @@
 </div>
 
 <div ng-controller="leaderboardController">
-
-	<div class="filterFriends">
-		Search Friends: <input type="text" ng-model="filter_name">
-		<ul>
-			<li ng-repeat="user in allusers | filter:filter_name" id="friendSearch"></li>
-				{{user.name}} {{user.wins}}
-			</li>
-		</ul>
-	</div>
-
     <div class="container">
+			Search Friends: <input type="text" ng-model="filter_name">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -36,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="user in allusers | orderBy:'-wins' ">
+                <tr ng-repeat="user in allusers | orderBy:'-wins'| filter:filter_name ">
                     <td>{{user.name}}</td>
                     <td>{{user.wins}}</td>
                 </tr>

@@ -6,6 +6,9 @@ app.controller('gameController',
 	$scope.levels = [1,2,3,4,5,6,7,8,9,10];
 	$scope.level = $scope.levels[0];
 	$scope.hint;
+	$scope.wrongGuesses;
+	$scope.wordBlank;
+	$scope.guessesLeft;
 
 	var self = this;
 	self.randomWord = {};
@@ -140,9 +143,12 @@ app.controller('gameController',
 	}
 
 	function updateScore() {
-		document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
-		document.getElementById("word-blank").innerHTML = correctGuesses.join(" ");
-		document.getElementById("guesses-left").innerHTML = remainingGuesses;
+		$scope.wrongGuesses = wrongGuesses.join(" ");
+		$scope.correctGuesses = correctGuesses.join(" ");
+		$scope.guessesLeft = remainingGuesses;
+		if(!$scope.$$phase) {
+			$scope.$apply();
+		}
 	}
 
 	function isGameEnded(){
