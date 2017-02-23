@@ -7,54 +7,53 @@
 <body>
 </body>
 </html>
-
+<div ng-controller="userController" id="logout">
+			<a href="#/login" ng-click='logout()'>Logout</a>
+</div>
+<div class="title">
 	<h1>HANGMAN</h1>
-
-
-
-		<div ng-controller="userController" id="logout">
-					<a href="#/login" ng-click='logout()'>Logout</a>
-		</div>
+</div>
 
 	<div ng-controller="gameController as GC">
-		<h3>Welcome <span id="userName">{{user.name}}</span>,</h3>
-		<h3>to start game select level of difficulty & press any key to get started!</h3>
+		<div id="container">
+			<h3 class="text-center">Welcome {{user.name}},</h3>
+			<h3>to start game select level of difficulty & press any key to get started!</h3>
 
-			<div id="select">
-				<select ng-model="level" ng-change="levelSelector()" class="form-control">
-					<option value="1">Level 1</option>
-					<option value="2">Level 2</option>
-					<option value="3">Level 3</option>
-					<option value="4">Level 4</option>
-					<option value="5">Level 5</option>
-					<option value="6">Level 6</option>
-					<option value="7">Level 7</option>
-					<option value="8">Level 8</option>
-					<option value="9">Level 9</option>
-					<option value="10">Level 10</option>
-				</select>
+				<div id="select">
+					<select ng-model="level" ng-change="levelSelector()" class="form-control">
+						<option value="1">Level 1</option>
+						<option value="2">Level 2</option>
+						<option value="3">Level 3</option>
+						<option value="4">Level 4</option>
+						<option value="5">Level 5</option>
+						<option value="6">Level 6</option>
+						<option value="7">Level 7</option>
+						<option value="8">Level 8</option>
+						<option value="9">Level 9</option>
+						<option value="10">Level 10</option>
+					</select>
+				</div>
+
+			<p id="guesses">Guesses Left: {{guessesLeft}}</p>
+
+
+
+			<h2> {{correctGuesses}} </h2>
+
+			<p>Wrong Guesses: {{wrongGuesses}}</p>
+
+			<div id="hint">
+				<button type="button" name="Hint" ng-click="getHint()" class="btn btn-default" >Need a hint?</button>
+				<p>{{hint}}</p>
 			</div>
 
-		<p id="guesses">Guesses Left: {{guessesLeft}}</p>
+		  <p id="wins">Wins: {{user.wins}}</p>
+			<p id="loss">Losses: {{user.losses}}</p>
 
+			<div id="zero">
 
+				<img id="one" src="../static/images/game/{{image}}">
 
-		<h2> {{correctGuesses}} </h2>
-
-		<p>Wrong Guesses: {{wrongGuesses}}</p>
-
-		<div id="hint">
-			<button type="button" name="Hint" ng-click="getHint()" class="btn btn-default" >Need a hint?</button>
-			<p>{{hint}}</p>
+			</div>
 		</div>
-
-	  <p id="wins">Wins: {{user.wins}}</p>
-		<p id="loss">Losses: {{user.losses}}</p>
-
-		<div id="zero">
-
-			<img id="one" src="../static/images/game/{{image}}">
-
-		</div>
-
 </div>
