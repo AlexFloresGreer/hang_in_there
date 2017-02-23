@@ -80,4 +80,4 @@ Hangman extensions
 * Player chooses the level of difficulty from drop down list
 * If player a loses the game an alert will notify the user and reveal what the secret word was
 * Leaderboard will be displayed in descending order from highest score to lowest by clicking on Leaderboard tab, the socres are being pulled from the MongoDB
-* In Leaderboard tab there's a feature to search for friends using Angular.JS
+* In Leaderboard tab there's an Angular.JS feature to type and search for friends by name or score
