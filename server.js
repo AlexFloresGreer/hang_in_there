@@ -18,12 +18,6 @@ var routes_setter = require('./server/config/routes.js');
 routes_setter(app);
 
 
-// // Setup local server
-// const port = process.env.PORT || 3000;
-// const server = app.listen(port, function () {
-//   console.log('Server Running on PORT:', server.address().port);
-//   console.log('Press CTRL + C to Quit');
-// });
 app.listen(8000, function(){
   console.log("I'm listening on 8000!");
 })
