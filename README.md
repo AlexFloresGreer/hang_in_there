@@ -1,18 +1,18 @@
 Hang In There
 -----------------
 
-Hang in There is a full-stack application of the traditional hangman game. 
+_Hang in There_ is a full-stack application of the traditional hangman game. 
 
 
 Installation
 -----------------
 
-* First install [MongoDB](https://www.mongodb.com/download-center#enterprise)
-    -create the following directory for Windows users `C:\data\db`, this is so mongod.exe will work.
+* First install [MongoDB](https://www.mongodb.com/download-center)
     
 ######Windows
 
-* For Windows: Open 2 command prompts (no git bash), and navigate to: `cd c:/"Program Files"/MongoDB/Server/<version number>/bin/` on both of them
+* Create the following directory `C:\data\db`, this is so mongod.exe will work.
+* Open 2 command prompts (no git bash or Node.JS), and navigate to: `cd c:/"Program Files"/MongoDB/Server/<version number>/bin/` on both of them
 * On terminal 1 now type mongod.exe first, on terminal 2 type mongo.exe and leave those 2 running while you use the app
 
 ######Mac
@@ -22,17 +22,15 @@ Installation
 * On your commandline type `mongod`, if that doesn't work try `sudo mongod `, don't close this window or anything else. 
 * Open up a new tab on your terminal and type `mongo ` and you're now connected to the database
 
-
 #### Continue with installation
 
 * Install latest version of [Node.js](https://nodejs.org/en/download/current/)
-* Go to game repo [hang in there](https://github.com/AlexFloresGreer/hang_in_there)
-* Clone the repository
-* Open command line and navigate to folder named "hang in there", you should see all the folders but most importantly you should be able to see the server.js file, if you see it you're in the right place
-* To connec to the MongoDB server follow the following instructions for Mac or Windows
-* All npm commands should be run from the Node.js cmd, not regular cmd
-* On a new command line (Node.JS) run `npm install express`, `npm install cors-anywhere`
-* On the new commandline you just opened install `npm install -g nodemon`  (may require sudo)
+* Clone or download repo [hang in there](https://github.com/AlexFloresGreer/hang_in_there)
+* Open Node.JS cmd prompt and navigate to folder named "hang in there", you should see all the folders but most importantly you should be able to see the server.js file, if you see it you're in the right place
+* To connect to the MongoDB server follow the following instructions for Mac & Windows
+* All npm commands should be run from the Node.js cmd prompt
+* On a new cmd line (Node.JS) run `npm install express`, `npm install cors-anywhere`
+* On the new commandline you just opened install `npm install -g nodemon`  (may require sudo or administrative level access)
 * Once you've installed express, cors-anywhere, and nodemon run `nodemon server.js` to start the app connect to the server
 * Go to [localhost:8000](http://localhost:8000/)
 * And voila! Login to start playing Hangman!
@@ -41,7 +39,7 @@ Installation
 Assumptions
 -----------------
 
-* Hangman will be played in a desktop web browser
+* Hangman will be played in desktop web browser
 
 Hangman technology
 -----------------
@@ -57,7 +55,7 @@ Hangman features
 -----------------
 
 * Hangman game retrieves secret word
-  - A random word is retrieved from Word Dictionary REST API based on min/max requirements and level of difficulty chosen by player
+  - A random word is retrieved from Word Dictionary REST API based on level of difficulty chosen by the player
   - The random word's letters are displayed as empty "_" spaces
 
 * Player makes guesses
