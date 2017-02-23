@@ -1,7 +1,7 @@
 Hang In There
 -----------------
 
-_Hang in There_ is a full-stack application of the traditional hangman game. 
+_Hang in There_ is a full-stack application of the traditional hangman game
 
 
 Installation
@@ -75,8 +75,9 @@ Hangman extensions
 -----------------
 
 * Every time a wrong guess is made the image of the Hangman will change
-* After game round is finished the Win or Lose score is stored in the MongoDB and updated in the Leaderboard
-* Hint button will display the first and last letter of secret word
+* After a round is finished the Win or Lose score is stored in the MongoDB and updated in the Leaderboard
+* Hint button will display the first and last letters of secret word
 * Player chooses the level of difficulty from drop down list
 * If player a loses the game an alert will notify the user and reveal what the secret word was
-* Leaderboard will be displayed in descending order from highest score to lowest by clicking on Leaderboard tab, the socres are being pulled from the MongoDB. 
+* Leaderboard will be displayed in descending order from highest score to lowest by clicking on Leaderboard tab, the socres are being pulled from the MongoDB
+* In Leaderboard tab there's a feature to search for friends using Angular.JS
